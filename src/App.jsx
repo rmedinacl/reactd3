@@ -1,55 +1,21 @@
-import Tareas from './components/Tareas'
-import { useState } from 'react'
-import { BaseColaboradores } from './database/data'
-import './App.css'
+import { useState } from "react";
+import Container from "react-bootstrap/Container";
+import TableUno from "./components/Table1";
+import BusquedaCol from "./components/Busqueda";
 
 function App() {
-  const [data, setData] = useState(BaseColaboradores);
-	const [filteredData, setFilteredData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-	const [form, setForm] = useState({
-		id: '',
-		nombre: '',
-		correo: '',
-		edad: '',
-		cargo: '',
-		telefono: '',
-	});
-
-	const [formState, setFormState] = useState('');
-
-  const handleSubmit = (event) => {
-		event.preventDefault();
-		const id = data.length + 1;
-		const { nombre, correo, edad, cargo, telefono } = event.target;
-
-		if (
-			!nombre.value ||
-			!correo.value ||
-			!edad.value ||
-			!cargo.value ||
-			!telefono.value
-		) {
-			setFormState('Todos los campos son requeridos');
-		} else {
-			const formData = {
-				id,
-				nombre: nombre.value,
-				correo: correo.value,
-				edad: edad.value,
-				cargo: cargo.value,
-				telefono: telefono.value,
-			};
-
-			handleAddUser(formData);
-		}
-	};
+  const handleSearch = (value) => {
+    setSearchTerm(value);
+  };
 
   return (
-    <>
-      <Tareas />
-    </>
-  )
+    <Container fluid="md">
+      <BusquedaCol onSearch={handleSearch} />
+      <TableUno searchTerm={searchTerm} />
+    </Container>
+  );
 }
 
-export default App
+export default App;
