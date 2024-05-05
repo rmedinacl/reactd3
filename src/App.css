@@ -41,9 +41,14 @@
   color: #888;
 }
 
+.table {
+  margin-top: 18px;
+}
+
 .container-sm {
   display: flex;
   justify-content: center;
+  min-height: 100vh;
   max-width: 640px;
   margin: 0 auto;
 }
