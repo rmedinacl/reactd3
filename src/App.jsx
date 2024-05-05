@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Container from "react-bootstrap/Container";
-import TableUno from "./components/Table1";
+import { TableUsers } from "./components/Tabla2";
 import BusquedaCol from "./components/Busqueda";
 import Registro from "./components/Registro";
+import { BaseColaboradores } from "./database/data";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [formErrors, setFormErrors] = useState("");
+  const [enviarFormulario, setEnviarFormulario] = useState("");
 
   const handleUser = (formData) => {
     // Lógica para manejar los datos del formulario
@@ -20,7 +22,12 @@ function App() {
   return (
     <Container fluid="md">
       <BusquedaCol onSearch={handleSearch} />
-      <TableUno searchTerm={searchTerm} />
+      <TableUsers
+        searchTerm={searchTerm}
+        data={BaseColaboradores}
+        onChange={enviarFormulario}
+      />
+      {/* <TableUno searchTerm={searchTerm} data={BaseColaboradores} /> */}
       <Registro
         handleUser={handleUser}
         setFormErrors={setFormErrors}
