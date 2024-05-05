@@ -1,22 +1,21 @@
-import PropTypes from "prop-types";
 import Alert from "react-bootstrap/Alert";
 
-const Alerta = ({ formErrors, color }) => {
+function AlertForm({ formErrors }) {
   return (
     <>
       {formErrors && (
-        <Alert className="alerta" key={color} variant={color}>
-          {" "}
+        <Alert
+          variant={
+            formErrors === "Colaborador agregado exitosamente"
+              ? "success"
+              : "danger"
+          }
+        >
           {formErrors}
         </Alert>
       )}
     </>
   );
-};
+}
 
-Alerta.propTypes = {
-  formErrors: PropTypes.string,
-  color: PropTypes.string,
-};
-
-export default Alerta;
+export default AlertForm;
