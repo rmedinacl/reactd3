@@ -7,8 +7,12 @@ const Registro = ({ handleUser, setFormErrors, formErrors }) => {
   return (
     <div>
       <Card className="card">
-        <p className="sub">Usa tu email para registrarte</p>
-        <Formulario handleUser={handleUser} setFormErrors={setFormErrors} />
+        <p className="sub">Agrega a los colaboradores a la lista</p>
+        <Formulario
+          handleUser={handleUser}
+          setFormErrors={setFormErrors}
+          formErrors={formErrors}
+        />
       </Card>
       <AlertForm formErrors={formErrors} />
     </div>

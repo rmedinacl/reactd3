@@ -5,7 +5,11 @@ function AlertForm({ formErrors }) {
     <>
       {formErrors && (
         <Alert
-          variant={formErrors === "Registro exitoso" ? "success" : "danger"}
+          variant={
+            formErrors === "Colaborador agregado exitosamente"
+              ? "success"
+              : "danger"
+          }
         >
           {formErrors}
         </Alert>

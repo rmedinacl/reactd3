@@ -1,18 +1,23 @@
 import { useState } from "react";
 import Container from "react-bootstrap/Container";
-import { TableUsers } from "./components/Tabla2";
 import BusquedaCol from "./components/Busqueda";
 import Registro from "./components/Registro";
 import { BaseColaboradores } from "./database/data";
+import TableUno from "./components/Table1";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [formErrors, setFormErrors] = useState("");
-  const [enviarFormulario, setEnviarFormulario] = useState("");
+  const [colaboradores, setColaboradores] = useState(BaseColaboradores);
+
+  const filteredColaboradores = colaboradores.filter((colaborador) =>
+    Object.values(colaborador).some((val) =>
+      val.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   const handleUser = (formData) => {
-    // Lógica para manejar los datos del formulario
-    console.log(formData);
+    setColaboradores([...colaboradores, formData]);
   };
 
   const handleSearch = (value) => {
@@ -22,16 +27,14 @@ function App() {
   return (
     <Container fluid="md">
       <BusquedaCol onSearch={handleSearch} />
-      <TableUsers
-        searchTerm={searchTerm}
-        data={BaseColaboradores}
-        onChange={enviarFormulario}
-      />
-      {/* <TableUno searchTerm={searchTerm} data={BaseColaboradores} /> */}
+
+      <TableUno searchTerm={searchTerm} data={filteredColaboradores} />
       <Registro
         handleUser={handleUser}
         setFormErrors={setFormErrors}
         formErrors={formErrors}
+        colaboradores={colaboradores}
+        setColaboradores={setColaboradores}
       />
     </Container>
   );

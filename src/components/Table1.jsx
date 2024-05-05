@@ -1,14 +1,14 @@
 import Table from "react-bootstrap/Table";
 
-function TableUno({ searchTerm, handleUser }) {
-  const filteredColaboradores = BaseColaboradores.filter((colaborador) =>
+function TableUno({ data, searchTerm }) {
+  const filteredColaboradores = data.filter((colaborador) =>
     Object.values(colaborador).some((val) =>
       val.toString().toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
 
   return (
-    <Table striped bordered hover responsive handleUser={handleUser}>
+    <Table striped bordered hover responsive>
       <thead>
         <tr>
           <th>Nombre</th>

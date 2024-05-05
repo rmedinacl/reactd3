@@ -21,9 +21,6 @@ function BusquedaCol({ onSearch }) {
         value={searchTerm}
         onChange={handleSearch}
       />
-      {/* <Button variant="outline-secondary" id="button-addon2">
-        Buscar
-      </Button> */}
     </InputGroup>
   );
 }

@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import PropTypes from "prop-types";
 import AlertForm from "./Alert";
 
-const Formulario = ({ handleUser, formErrors, setFormErrors }) => {
+const Formulario = ({ handleUser, setFormErrors }) => {
   const [form, setForm] = useState({
     id: "",
     nombre: "",
@@ -16,6 +16,7 @@ const Formulario = ({ handleUser, formErrors, setFormErrors }) => {
 
   const enviarFormulario = (event) => {
     event.preventDefault();
+
     const { nombre, correo, edad, cargo, telefono } = form;
     const id = Date.now();
 
@@ -140,7 +141,7 @@ const Formulario = ({ handleUser, formErrors, setFormErrors }) => {
           />
         </Form.Group>
 
-        {formErrors && (
+        {/* {formErrors && (
           <AlertForm
             className={`text-${
               formErrors === "Colaborador agregado exitosamente"
@@ -149,7 +150,7 @@ const Formulario = ({ handleUser, formErrors, setFormErrors }) => {
             }`}
             formErrors={formErrors}
           ></AlertForm>
-        )}
+        )} */}
 
         <Button variant="success" type="submit">
           Agregar colaborador
