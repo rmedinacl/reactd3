@@ -7,7 +7,7 @@ const Registro = ({ handleUser, setFormErrors, formErrors }) => {
   return (
     <div>
       <Card className="card">
-        <p className="sub">Agrega a los colaboradores a la lista</p>
+        <h2 className="sub">Agrega a los colaboradores a la lista</h2>
         <Formulario
           handleUser={handleUser}
           setFormErrors={setFormErrors}

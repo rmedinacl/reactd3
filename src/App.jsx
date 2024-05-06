@@ -4,6 +4,7 @@ import BusquedaCol from "./components/Busqueda";
 import Registro from "./components/Registro";
 import { BaseColaboradores } from "./database/data";
 import TableUno from "./components/Table1";
+import { Row, Col } from "react-bootstrap";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,17 +26,22 @@ function App() {
   };
 
   return (
-    <Container fluid="md">
-      <BusquedaCol onSearch={handleSearch} />
-
-      <TableUno searchTerm={searchTerm} data={filteredColaboradores} />
-      <Registro
-        handleUser={handleUser}
-        setFormErrors={setFormErrors}
-        formErrors={formErrors}
-        colaboradores={colaboradores}
-        setColaboradores={setColaboradores}
-      />
+    <Container className="d-flex flex-column ">
+      <Row>
+        <BusquedaCol onSearch={handleSearch} />
+      </Row>
+      <Row className="">
+        <TableUno searchTerm={searchTerm} data={filteredColaboradores} />
+      </Row>
+      <Row>
+        <Registro
+          handleUser={handleUser}
+          setFormErrors={setFormErrors}
+          formErrors={formErrors}
+          colaboradores={colaboradores}
+          setColaboradores={setColaboradores}
+        />
+      </Row>
     </Container>
   );
 }
