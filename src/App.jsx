@@ -26,14 +26,14 @@ function App() {
   };
 
   return (
-    <Container className="d-flex flex-column ">
-      <Row>
+    <Container className="container mt-5 ">
+      <Row className="col-12">
         <BusquedaCol onSearch={handleSearch} />
       </Row>
-      <Row className="">
+      <Row className="col-12">
         <TableUno searchTerm={searchTerm} data={filteredColaboradores} />
       </Row>
-      <Row>
+      <Row className="col-12">
         <Registro
           handleUser={handleUser}
           setFormErrors={setFormErrors}
